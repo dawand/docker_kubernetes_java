@@ -72,4 +72,11 @@ OR use -volumes-from
 
 ## Java Microservices
 
+### Build the docker with the Dockerfile provided in this repository
+`docker build . -t rest-example`
+
+### Run the newly built image (rest-example)
+
+`docker run -p 8080:8080 -it rest-example `
+
 
