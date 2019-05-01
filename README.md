@@ -79,4 +79,13 @@ OR use -volumes-from
 
 `docker run -p 8080:8080 -it rest-example `
 
+### Build the ping-example container from Dockerfile
+
+`cd ping-example`
+`docker build -t ping-example .`
+`docker run ping-example`
+for sending ping to localhost
+`docker run ping-example www.google.com`
+to ping Google
+
 
