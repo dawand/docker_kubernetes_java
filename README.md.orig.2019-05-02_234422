@@ -44,14 +44,11 @@
          * [Set the number of CPU cores to be used by the container](#set-the-number-of-cpu-cores-to-be-used-by-the-container)
          * [Updating constrains of a running container](#updating-constrains-of-a-running-container)
    * [Java Microservices](#java-microservices)
-      * [Maven Automation](#maven-automation)
          * [Using Maven to generate Docker images (without Dockerfile)](#using-maven-to-generate-docker-images-without-dockerfile)
          * [Using Maven to start a container](#using-maven-to-start-a-container)
          * [Using Maven to run a container](#using-maven-to-run-a-container)
-   * [Kubernetes](#kubernetes)
-      * [TBA](#tba)
 
-<!-- Added by: dawan, at: Thu  2 May 2019 23:44:22 BST -->
+<!-- Added by: dawan, at: Thu  2 May 2019 23:38:33 BST -->
 
 <!--te-->
 
