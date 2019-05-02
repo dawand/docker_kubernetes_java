@@ -48,10 +48,9 @@ OR check in:
 
 ### Specify a local path for container volume
 
-Windows:
-`docker run -v d:/docker_volumes/volume1:/volume -it busybox`
-Mac:
-`docker run -v ~/volume1:/volume -it busybox`
+Windows: `docker run -v d:/docker_volumes/volume1:/volume -it busybox`
+
+Mac:`docker run -v ~/volume1:/volume -it busybox`
 
 ### Create a standalone named volume 
 
@@ -60,6 +59,7 @@ Mac:
 ### Map the volume to containers
 
 `docker run -it -v myVolume:/volume --name myBusybox3 busybox`
+
 `docker run -it -v myVolume:/volume --name myBusybox4 busybox`
 
 OR use -volumes-from
@@ -82,10 +82,15 @@ OR use -volumes-from
 ### Build the ping-example container from Dockerfile
 
 `cd ping-example`
+
 `docker build -t ping-example .`
+
 `docker run ping-example`
+
 for sending ping to localhost
+
 `docker run ping-example www.google.com`
+
 to ping Google
 
 ### Run container in detached mode
@@ -103,6 +108,7 @@ to ping Google
 ### Specify the log driver to write logs to
 
 `docker run log-driver=syslog rest-example`
+
 You can use `journald`, `splunk`, `fluentd`, `awslogs`, etc
 
 ### Inspect a container
@@ -117,5 +123,34 @@ You can use `journald`, `splunk`, `fluentd`, `awslogs`, etc
 
 `docker inspect rest-example | jq -r '.[0].NetworkSettings.IPAddress'`
 
+### Get stats of all (not only running) the containers
+
+`docker stats -a`
+
+### Fetch container events
+
+`docker events`
+
+### Restart a container after it is shut down (in every case)
+
+`docker run --restart=always rest-example`
+
+### Restart a container after it is shut down (with a non-zero exit status)
+
+`docker run --restart=on-failure:5 rest-example`
+
+### Get the number of restarts of a container
+
+`docker inspect -f "{{ .RestartCount }}" rest-example`
+
+### Discover the last time the container was started again
+
+`docker inspect -f "{{ .State.StartedAt }}" rest-example`
+
+### Updating a restart policy on a running container
+
+`docker run -d -t rest-example`
+
+`docker update --restart=always rest-example`
 
 
