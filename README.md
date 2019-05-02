@@ -1,15 +1,13 @@
+
+Table of Contents
+=================
+
 * [Docker](#docker)
-
       * [Running a containerized Java application](#running-a-containerized-java-application)
-
       * [Network and ports](#network-and-ports)
-
          * [List network types](#list-network-types)
-
          * [Create a new network](#create-a-new-network)
-
          * [inspect a network](#inspect-a-network)
-
          * [Run Apache Tomcat for the newly created network](#run-apache-tomcat-for-the-newly-created-network)
          * [Run a busybox with the same network as myTomcat container](#run-a-busybox-with-the-same-network-as-mytomcat-container)
          * [Check if we can reach the tomcat webserver from the busybox](#check-if-we-can-reach-the-tomcat-webserver-from-the-busybox)
