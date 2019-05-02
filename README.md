@@ -88,4 +88,34 @@ for sending ping to localhost
 `docker run ping-example www.google.com`
 to ping Google
 
+### Run container in detached mode
+
+`docker run -d -p 8080:8080 rest-example`
+
+### Attach to the detached container
+
+`docker attach rest-example`
+
+### View logs of the running container
+
+`docker logs -f rest-example`
+
+### Specify the log driver to write logs to
+
+`docker run log-driver=syslog rest-example`
+You can use `journald`, `splunk`, `fluentd`, `awslogs`, etc
+
+### Inspect a container
+
+`docker inspect rest-example`
+
+### Inspect containers using Go template engine
+
+`docker inspect -f '{{.State.ExitCode}}' jboss.wildfly`
+
+### Fetch the IP address from the metadata of the container
+
+`docker inspect rest-example | jq -r '.[0].NetworkSettings.IPAddress'`
+
+
 
