@@ -270,4 +270,69 @@ Or to stop the container
 
 # Kubernetes
 
-## TBA
+## Minikube
+
+### Install Minikube to use Kubernetes locally
+
+Mac: `brew cask install minikube`
+
+Linux: `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube`
+`sudo cp minikube /usr/local/bin && rm minikube`
+
+Windows: `choco install minikube kubernetes-cli`
+
+### Start minikube
+
+`minikube start`
+
+### Show Kubernetes dashboard
+
+`minikube dashboard`
+
+## Kubectl
+
+### Install kubectl on your platform
+
+Mac: `brew install kubernetes-cli`
+Linux: `sudo snap install kubectl --classic`
+Windows: `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/windows/amd64/kubectl.exe`
+
+### Test if minikube and kubectl are correctly installed
+
+`kubectl get nodes`
+
+## Services
+
+### Create a service for the rest-example app
+
+`kubectl create -f service.yml`
+
+### Display the services
+
+`kubectl get services`
+
+### Display the services of all the namespaces
+
+`kubectl get services --all-namespaces`
+
+### Display the details of a particular service
+
+`kubectl describe service rest-example`
+
+## Deployments
+
+### Create a deployment for the rest-example app
+
+`kubectl create -f deployment.yml`
+
+### Display all the eployments
+
+`kubectl get depployments`
+
+### Get the service address
+
+`minikube service rest-example --url`
+
+
+
