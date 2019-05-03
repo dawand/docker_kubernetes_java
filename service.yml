@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rest-example
+  name: dokuja
   labels:
-    app: rest-example
+    app: dokuja
     tier: backend
 spec:
   type: NodePort
@@ -11,5 +11,5 @@ spec:
     # the port that this service should serve on
   - port: 8080
   selector:
-    app: rest-example
+    app: dokuja
     tier: backend

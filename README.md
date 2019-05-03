@@ -290,6 +290,18 @@ Windows: `choco install minikube kubernetes-cli`
 
 `minikube dashboard`
 
+### List the available minikube addons
+
+`minikube addons list`
+
+### disable an addon
+
+`minikube addons disable dashboard`
+
+### enable an addon
+
+`minikube addons enable heapster`
+
 ## Kubectl
 
 ### Install kubectl on your platform
@@ -334,5 +346,42 @@ Windows: `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.
 
 `minikube service rest-example --url`
 
+### Test if you can get the list of books
+
+`curl $(minikube service dokuja --url)/books -H {"Content-Type: application/json"}`
+
+### Read the logs of the running container
+
+`kubectl logs $(kubectl get pods | sed -n 2p | awk '{print $1;}')`
+
+### Get the shell of the running container
+
+`kubectl exec -it $(kubectl get pods | sed -n 2p | awk '{print $1;}') -- /bin/bash`
+
+## ReplicaSets
+
+### Scaling deployments manually
+
+`kubectl scale deployment dokuja --replicas=3`
+
+### Automatically scaling up and down the deployment
+
+`kubectl autoscale deployment dokuja --cpu-percent=50 --min=1 --max=5`
+
+## Events
+
+### Viewing cluster events
+
+`kubectl get events`
+
+##  Cleaning up
+
+### Delete a deployment
+
+`kubectl delete deployment dokuja`
+
+### Delete a service
+
+`kubectl delete service dokuja`
 
 
