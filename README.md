@@ -79,8 +79,16 @@
       * [Cleaning up](#cleaning-up)
          * [Delete a deployment](#delete-a-deployment)
          * [Delete a service](#delete-a-service)
+      * [API-Server](#api-server)
+         * [Setup a proxy for kubectl to communicate with minikube](#setup-a-proxy-for-kubectl-to-communicate-with-minikube)
+         * [Check if our api-server is running](#check-if-our-api-server-is-running)
+         * [Create a service using api-server](#create-a-service-using-api-server)
+         * [Create a deployment using api-server](#create-a-deployment-using-api-server)
+         * [Check the running pod](#check-the-running-pod)
+         * [Delete a deployment using curl](#delete-a-deployment-using-curl)
+         * [Delete the service using curl](#delete-the-service-using-curl)
 
-<!-- Added by: dawan, at: Fri  3 May 2019 23:26:36 BST -->
+<!-- Added by: dawan, at: Sat  4 May 2019 12:38:49 BST -->
 
 <!--te-->
 
@@ -412,5 +420,41 @@ Windows: `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.
 ### Delete a service
 
 `kubectl delete service dokuja`
+
+## API-Server
+
+### Setup a proxy for kubectl to communicate with minikube
+
+`kubectl proxy --port=8080`
+
+__In a separate bash session:__
+
+### Check if our api-server is running 
+
+`curl http://localhost:8080/api/`
+
+### Create a service using api-server
+
+`curl -s http://localhost:8080/api/v1/namespaces/default/services \`
+
+`-XPOST -H 'Content-Type: application/json' -d@service.json`
+
+### Create a deployment using api-server
+
+`curl -s http://localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments \`
+
+`-XPOST -H 'Content-Type: application/json' -d@deployment.json`
+
+### Check the running pod
+
+`curl -X GET http://localhost:8080/api/v1/namespaces/default/pods`
+
+### Delete a deployment using curl
+
+`curl http://localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments -XDELETE`
+
+### Delete the service using curl
+
+`curl http://localhost:8080/api/v1/namespaces/default/services/dokuja -XDELETE`
 
 

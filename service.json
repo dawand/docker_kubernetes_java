@@ -1,0 +1,23 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "dokuja",
+    "labels": {
+      "app": "dokuja",
+      "tier": "backend"
+    }
+  },
+  "spec": {
+    "type": "NodePort",
+    "ports": [
+      {
+        "port": 8080
+      }
+    ],
+    "selector": {
+      "app": "dokuja",
+      "tier": "backend"
+    }
+  }
+}
